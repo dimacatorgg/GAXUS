@@ -10,7 +10,7 @@ document.querySelectorAll(".body .stick")[Math.floor(document.querySelectorAll("
 ,100)
 </script>
 <template>
-    <button class="anime"><div class="hicon c"></div><div class="ticon c">Stop Animaiton</div></button>
+    <button class="anime"><div class="hicon c"><img src="./505050e0-d899-4835-95cb-77218a4c6e65.png" width="40px" height="40px"></div><div class="ticon c">Stop Animaiton</div></button>
     <div class="body">
         <div class="stick"></div>
         <div class="stick"></div>

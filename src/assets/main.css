@@ -310,13 +310,16 @@ button.next.bn{
   height: 60px;
   border-radius: 6px;
   color: white;
+  color: black;
+  background: white;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background: transparent;
+  transition: all 0.5s;
   cursor: pointer;
   outline: none;
   border: none;
+  box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px, rgb(255, 255, 255) 0px 0px 0px 3px;
 }
 .c{
   display: flex;
@@ -332,9 +335,17 @@ button.next.bn{
 .ticon{
   width: 70%;
   height: 40px;
+  transition: all 0s;
   z-index: 200;
   margin-left: 2px;
 }
-.anime:hover .ticon{
+.anime:hover {
   width: 60px;
+  background-color: red;
+  cursor: pointer;
+}
+.anime:hover .ticon{
+
+  opacity: 0;
+  width: 0px;
 }
