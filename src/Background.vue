@@ -1,16 +1,31 @@
 <script setup>
 import {ref,computed} from 'vue'
 import random from './lol';
+const animr = ref(true)
 setInterval(function(){
+    if(animr.value==true){
 var io = Math.floor(Math.random()*window.innerWidth);
 var ih = Math.floor(Math.random()*window.innerHeight);
 var boja = [random(250),random(250),random(250)]
 document.querySelectorAll(".body .stick")[Math.floor(document.querySelectorAll(".body .stick").length*Math.random())].setAttribute("style","width:"+io+"px;height:"+ih+"px;background:rgb("+boja[0]+","+boja[1]+","+boja[2]+")")
+    
+
+
 }
+else{
+    clearInterval(this);
+    
+}}
 ,100)
+
+function stopanim(){
+    animr.value = !animr.value;
+    document.querySelector(".anime .rel").classList.toggle("ag");
+    
+}
 </script>
 <template>
-    <button class="anime"><div class="hicon c"><img src="./505050e0-d899-4835-95cb-77218a4c6e65.png" width="40px" height="40px"></div><div class="ticon c">Stop Animaiton</div></button>
+   <button class="anime" @click="stopanim"><div class="rel c"><img src="./505050e0-d899-4835-95cb-77218a4c6e65.png"></div></button>
     <div class="body">
         <div class="stick"></div>
         <div class="stick"></div>

@@ -1,7 +1,12 @@
+@font-face{
+  src: url(/HelveticaNeue-Black.otf);
+  font-family: "Twitter";
+}
 body{
   background: rgba(0, 0, 0, 0.918);
   backdrop-filter: blur(12px);
   margin: 0;
+  font-family: "Twitter";
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -203,53 +208,13 @@ button.next.ac{
   height: 65px;
   left: 40%;
   display: flex;
-  flex-wrap: wrap;
+ 
   justify-content: flex-start;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(0, 0, 0) 0px 0px 0px 1px inset;
 }
-.taskbar .icons{
-  display: flex;
-  justify-content: flex-start;
-  
-}
-.icon{
-  cursor: pointer;
-  padding: 2px;
-  width: 55px;
-  height: 55px;
-  display: flex;
- 
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-}
-.anim .icon{
-  background: #0F0F0F
-  ;
-  cursor: pointer;
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  bottom: 1px;
-  border-radius: 6px;
-  padding: 0px;
-}
-.anim{
-  width: 57px;
-  height: 57px;
- border-radius: 6px;
- position: relative;
-  
- 
-  background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff3b5c);
-  background-size: 200% 200%;
-  animation: smoothGradient 6s infinite ease-in-out;
 
-}
-.anim .icon:hover + .anim{
- background-color: blue;
-}
+
 @keyframes smoothGradient {
   0% {
     background-position: 0% 50%;
@@ -264,15 +229,8 @@ button.next.ac{
 
 
 
-.icon:hover{
-  
-}
-.popuups{
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: flex-start;
-}
+
+
 button.next.bn{
   opacity: 1;
 }
@@ -306,46 +264,61 @@ button.next.bn{
   position: absolute;
   top: 5%;
   left: 5%;
-  width: 200px;
+  width: 60px;
   height: 60px;
-  border-radius: 6px;
-  color: white;
-  color: black;
-  background: white;
-  display: flex;
-  justify-content: flex-start;
+  border-radius: 4px;
+  background: rgba(226, 222, 222, 0.925);
+  backdrop-filter: blur(12px);
+  display:flex;
+  justify-content: center;
   align-items: center;
-  transition: all 0.5s;
-  cursor: pointer;
+  padding: 0;
   outline: none;
+  cursor: pointer;
   border: none;
-  box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px, rgb(255, 255, 255) 0px 0px 0px 3px;
+  z-index: 100000000000;
 }
-.c{
+.anime img{
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position:relative;
+}
+.anime .rel::before{
+  position: absolute;
+  content: '';
+  width: 0px;
+  height: 4px;
+  border-radius: 4px;
+  transform: rotate(-45deg);
+  transition: all 0.5s;
+  background: rgb(231, 118, 98);
+  top:50%;
+  left: 12%;
+}
+ .rel.ag::before{
+  width: 40px;
+}
+button.anime{
+  cursor: pointer;
+}
+.anime:hover{
+  box-shadow: rgba(116, 205, 221, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(159, 248, 87, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(255, 238, 143, 0.09) 0px -3px 5px;
+}
+.anime.ag{
+  background: red;
+}
+.rel{
+  width: 100%;
+  height: 100%;
+  position:relative;
   display: flex;
   justify-content: center;
-  float: left;
   align-items: center;
 }
-.hicon{
-  width: 30%;
-  height: 100%;
-  
-}
-.ticon{
-  width: 70%;
-  height: 40px;
-  transition: all 0s;
-  z-index: 200;
-  margin-left: 2px;
-}
-.anime:hover {
-  width: 60px;
-  background-color: red;
-  cursor: pointer;
-}
-.anime:hover .ticon{
+.i{
+  position: relative;
+  width: 70px;
+  height: 70px;
 
-  opacity: 0;
-  width: 0px;
 }

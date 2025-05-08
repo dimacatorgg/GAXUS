@@ -1,28 +1,54 @@
-.table{
-    width: 70%;
-    height: 80%;
-    position: absolute;
-    top: 15%;
-    left: 10%;
+.taskbar{
+    width: 20%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.705);
+    backdrop-filter: blur(12px);
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
+    color: white;
     align-items: center;
-    padding: 2px;
+    z-index: 10000;
+    flex-wrap: wrap;
 }
-.table .tabs{
-   
-    margin: auto;
-    font-size: 20px;
-    padding: 4px;
+.taskbar .icons{
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
-.tabs .tab{
-    width: 90%;
-    height: 30px;
-    font-size: 20px;
-    padding: 5px;
-
-}
-.tabs .tab .part{
-    float: left;
+.taskbar .icons .icon img{
+    width: 40px;
+    height: 40px;
     
+}
+.taskbar .icons .icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hidentext{
+    display: none;
+}
+.popups{
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    margin-left: auto;
+    margin-right: 15px;
+}
+.popups .bns{
+    margin-left: 8px;
+    cursor: pointer;
+    z-index: 100000000;
+    position: relative;
+}
+.popups .bns:hover{
+    background: red;
+}
+
+.icons .icon:hover{
+
 }
