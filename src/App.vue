@@ -4,6 +4,7 @@ import {ref,computed, reactive} from 'vue'
 import Footer from './Footer.vue';
 import Task from './Task.vue';
 import Background from './Background.vue';
+import gmail from './gmail.vue';
 const input = ref('');
 const bools = computed(() => {
   return input.value!="" ? true : false
@@ -49,7 +50,7 @@ function anim(){
 
 </script>
 <template>
- <div class="center">
+ <!--<div class="center">
   <div class="rcenter">
 
   <form action="" @submit.prevent v-if="lol">
@@ -70,5 +71,6 @@ function anim(){
   </div>
  </div>
  <Task></Task>
- <Background></Background>
+ <Background></Background>-->
+ <gmail>sds</gmail>
 </template>

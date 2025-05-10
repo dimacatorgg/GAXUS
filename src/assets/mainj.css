@@ -8,7 +8,7 @@
     color: white;
     align-items: center;
     z-index: 10000;
-    flex-wrap: wrap;
+
 }
 .taskbar .icons{
     width: auto;
@@ -22,12 +22,42 @@
     height: 40px;
     
 }
-.taskbar .icons .icon {
+ .icon {
     width: 60px;
     height: 60px;
     display: flex;
     justify-content: center;
+    z-index: 10;
+transition: all 0.7s;
+    cursor: pointer;
+    position: relative;
     align-items: center;
+}
+.taskbar .icons .icon::before{
+    position:absolute;
+    content: '';
+    top: -2px;
+    left: -2px;
+    width: 0px;
+   height: 0px;
+
+
+z-index: -1;
+}
+.taskbar .icons .icon:after{
+    position: absolute;
+    content: '';
+    top: 2px;
+    left: 2px;
+    background: rgba(0, 0, 0, 0.541);
+    backdrop-filter: blur(12px);
+    z-index: -1;
+    height: 60px;
+    width: 60px;
+}
+ .icon:hover{
+    background:  linear-gradient(90deg, rgb(121, 194, 223) 0%, rgba(87, 199, 133, 1) 55%, rgba(237, 172, 107, 1) 99%);
+    
 }
 .hidentext{
     display: none;
@@ -37,18 +67,134 @@
     justify-content: flex-end;
     align-content: center;
     margin-left: auto;
+    flex-direction: column;
     margin-right: 15px;
+    height: 115%;
+    z-index: 10;
+    position: relative;
+    gap: 2px;
+    padding-bottom: 1px;
 }
 .popups .bns{
-    margin-left: 8px;
+    padding-right: 6px;
+   
     cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 15px;
+    border: 2px solid rgb(255, 255, 255);
     z-index: 100000000;
     position: relative;
+ 
+    transition: all 0.4s;
+    height:40px;
 }
 .popups .bns:hover{
-    background: red;
+   background-color: white;
+   color: black;
 }
 
-.icons .icon:hover{
+.hidenicon{
+    width: 0px;
+    height: 0px;
+    background: white;
+    margin-left: -2px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
 
+.hidenicon img{
+    width: 0px;
+    height: 0px;
+}
+.bns span{
+    margin-left: 10px;
+}
+
+.bns:hover .hidenicon{
+    width: 40px;
+    height: 40px;
+}
+.bns:hover .hidenicon img{
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+
+
+
+.body-center{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form .title{
+    position: relative;
+    /*
+* Created with https://www.css-gradient.com
+* Gradient link: https://www.css-gradient.com/?c1=68f9b8&c2=63e249&gt=l&gd=dtl
+*/
+background: #68F9B8;
+background: linear-gradient(135deg, #68F9B8, #63E249);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation-name: banana;
+    animation-duration:1.9s;
+    animation-delay: 0.2s;
+    animation-iteration-count: infinite;
+}
+@keyframes banana{
+    0%{
+        background-position: 20px -40px;
+    }
+    40%{
+        background-position: 100px 0px;
+    }
+    100%{
+        background-position: 201px 20px;
+    }
+}
+.code{
+    width: 420px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+   
+}
+.code .codes{
+    width: 70px;
+    height: 70px;
+    margin: 0;
+    border-right: 1px solid black;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.code .codes:nth-child(1){
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.code .codes:nth-child(6){
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.code .codes input{
+    width: 90%;
+    height: 90%;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
 }
