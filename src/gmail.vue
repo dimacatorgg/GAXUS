@@ -31,9 +31,9 @@ setInterval(function(){
     if(inputs.value != null){
         inputs.value.forEach(item => {
             if(item.value!=""){
-                item.classList.add("active")
+                item.parentElement.classList.add("active")
             }else{
-                item.classList.remove("active")
+                item.parentElement.classList.remove("active")
             }
         })
     }
@@ -106,7 +106,9 @@ setInterval(function(){
                 <div class="clock">
                   <div class="tt">Code will expire for</div>
                     <div class="rclock">
+                        <div class="rclocki">
                         {{ clock }}
+                        </div>
                     </div>
                 </div>
             </div>
