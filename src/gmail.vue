@@ -27,11 +27,17 @@ setInterval(function(){
 
 }
 },100)
-watchEffect(() => {
-    if( inputs.value!=null){
-    console.log(inputs.value[0].value)
+setInterval(function(){
+    if(inputs.value != null){
+        inputs.value.forEach(item => {
+            if(item.value!=""){
+                item.classList.add("active")
+            }else{
+                item.classList.remove("active")
+            }
+        })
     }
-})
+},100)
    window.onkeyup = function(e){
     
         if(some.value>=0 && e.key!="Backspace" && some.value!=vrednsoti.value.length-1){
@@ -47,6 +53,16 @@ watchEffect(() => {
             }
         }
    }
+ 
+   const clock = ref(30);
+   const clockr = ref(true)
+ setInterval(function(){
+    if(clockr.value == false){
+        clearInterval(this)
+    }else{
+        clock.value-=1;
+    }
+ },1000)
 </script>
 
 
@@ -85,6 +101,12 @@ watchEffect(() => {
                     <div class="codes" v-for="(code,index) in vrednsoti">
                         <input v-model="vrednsoti[index]" maxlength="1"  ref="inputs" />
                        
+                    </div>
+                </div>
+                <div class="clock">
+                  <div class="tt">Code will expire for</div>
+                    <div class="rclock">
+                        {{ clock }}
                     </div>
                 </div>
             </div>
