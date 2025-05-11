@@ -50,7 +50,7 @@ function anim(){
 
 </script>
 <template>
- <!--<div class="center">
+ <div class="center">
   <div class="rcenter">
 
   <form action="" @submit.prevent v-if="lol">
@@ -66,11 +66,11 @@ function anim(){
    
   </form>
   <div v-else class="sup">
-    You are done now go check gmail and verify you self!
+    <gmail></gmail>
   </div>
   </div>
  </div>
  <Task></Task>
- <Background></Background>-->
- <gmail>sds</gmail>
+ <Background></Background>
+ 
 </template>
