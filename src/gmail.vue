@@ -17,11 +17,11 @@ for(var i = 0;i<vrednsoti.value.length;i++){
     })
 }*/
 const inputs = ref(null)
-const vlls = ref(document.querySelectorAll("input"));
+const vlls = ref(document.querySelectorAll(".codes input"));
 const some = ref(-1);
 setInterval(function(){
-    for(var i=0;i<document.querySelectorAll("input").length;i++){
-    if(document.querySelectorAll("input")[i] === document.activeElement){
+    for(var i=0;i<document.querySelectorAll(".codes input").length;i++){
+    if(document.querySelectorAll(".codes input")[i] === document.activeElement){
         some.value = i;
     }
 
@@ -41,14 +41,14 @@ setInterval(function(){
    window.onkeyup = function(e){
     
         if(some.value>=0 && e.key!="Backspace" && some.value!=vrednsoti.value.length-1){
-            if(document.querySelectorAll("input")[some.value].value != ""){
-                document.querySelectorAll("input")[some.value +1].focus();
+            if(document.querySelectorAll(".codes input")[some.value].value != ""){
+                document.querySelectorAll(".codes input")[some.value +1].focus();
                 
              //   document.querySelectorAll("input")[some.value +1].innerHTML = e.key;
             }
         }else if(some.value!=0 && e.key=="Backspace"){
-            if(document.querySelectorAll("input")[some.value].value == ""){
-                document.querySelectorAll("input")[some.value-1].focus();
+            if(document.querySelectorAll(".codes input")[some.value].value == ""){
+                document.querySelectorAll(".codes input")[some.value-1].focus();
                
             }
         }

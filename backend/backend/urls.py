@@ -19,5 +19,10 @@ from django.urls import path
 from registracija import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.home,name="home")
+    path('',views.home,name="home"),
+    path('api/register/',views.registrujga,name="registrujga"),
+    path('api/test/',views.nes,name='nes'),
+    path('api/ses/',views.gug,name="sdasdsad"),
+    path('api/cockie',views.dajmu_kuki,name="sdasdasdada"),
+    path('api/cockied/',views.dd,name="sdas")
 ]
