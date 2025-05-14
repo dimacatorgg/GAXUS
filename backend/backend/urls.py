@@ -23,6 +23,8 @@ urlpatterns = [
     path('api/register/',views.registrujga,name="registrujga"),
     path('api/test/',views.nes,name='nes'),
     path('api/ses/',views.gug,name="sdasdsad"),
-    path('api/cockie',views.dajmu_kuki,name="sdasdasdada"),
-    path('api/cockied/',views.dd,name="sdas")
+    path('api/cockie/',views.dajmu_kuki,name="sdasdasdada"),
+    path('api/cockied/',views.dd,name="sdas"),
+    path('api/kuki/',views.dd,name="sdasd"),
+    path('api/lol/',views.lol,name="sadasd")
 ]

@@ -7,13 +7,16 @@ const gg = ref(null)
 onMounted(async () => {
   const data = await fetch(`http://localhost:8000/api/cockie/`);
   gg.value = await data.json()
-
+ 
+  if(gg.value.message==""){
+    router.push("/register")
+    console.log("sdasd")
+  }else {
+  
+    console.log(gg.value.message)
+  }
 })
-if(gg.value !=" "){
-  console.log("sdsadas")
-  console.log(verification());
-  router.push("/about");
-}
+
 </script>
 <template>
 

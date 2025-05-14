@@ -5,6 +5,7 @@ import Footer from './Footer.vue';
 import Task from './Task.vue';
 import Background from './Background.vue';
 import gmail from './gmail.vue';
+import { useRouter } from 'vue-router';
 const input = ref('');
 const bools = computed(() => {
   return input.value!="" ? true : false
@@ -52,7 +53,7 @@ const podaci = ref(null)
    const data = await fetch(`http://localhost:8000/api/register/?name=${list.value[0][0]}&?gmail=${list.value[2][0]}&?password=${list.value[1][0]}`);
     
   console.log(await data.json())
-
+    useRouter().push("/app")
   }else{
   if(bools){
     list.value[faza.value][0] = input.value;
