@@ -132,3 +132,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_USE_SESSIONS = False  # Koristi kolačiće (podrazumevano)
+CSRF_COOKIE_HTTPONLY = False  # Da bi Vue mogao da čita CSRF kolačić
+CORS_ALLOW_CREDENTIALS = True

@@ -26,5 +26,7 @@ urlpatterns = [
     path('api/cockie/',views.dajmu_kuki,name="sdasdasdada"),
     path('api/cockied/',views.dd,name="sdas"),
     path('api/kuki/',views.dd,name="sdasd"),
-    path('api/lol/',views.lol,name="sadasd")
+    path('api/lol/',views.lol,name="sadasd"),
+    path('api/login/',views.login,name="Mjaju"),
+    path('test/',views.test,name="sdad")
 ]

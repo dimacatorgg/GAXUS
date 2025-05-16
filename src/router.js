@@ -6,7 +6,7 @@ import Juj from "./Juj.vue";
 import Aplikacija from "./aplikacija.vue";
 const routes = [
     {path: '/',component:Juj},
-    { path: '/register', component: Home },
+    { path: '/register/:id', component: Home },
     { path: '/about', component: Gmail },
     {path:'/app',component:Aplikacija}
   ];

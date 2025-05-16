@@ -12,22 +12,22 @@ def registrujga(requests):
     password = requests.GET.get("password","jebiga")
     kmail = requests.GET.get("gmail","jebiga")
     id = str(uuid.uuid4())
-    if(neo.getdata(name) or neo.getdata(kmail)  or requests.COOKIES.get("idx")!=""):
-        return HttpResponse("Vec postji takav korsnik ili ste prijavljeni")
+    if(neo.proveri(name,kmail)):
+        return HttpResponse(f"d {neo.proveri(name,kmail)}")
     else:
         neo.ikok(name,password,kmail,id)
-    res= JsonResponse({'message':f'Uspesno ste ste ulogovali {requests.COOKIES.get("idx")}'})
-    res.set_cookie("idx",id,max_age=100000)
-   
-    
-    return res
+        res = JsonResponse({"message":f"{requests.COOKIES.get("idx")}"})
+        res.set_cookie("idx",id)
+        
+        return res
     
 def gug(requests):
     return JsonResponse({"message":f"{requests.GET.get("podatak",":s")}"})
 def nes(requests):
     return JsonResponse({"message":"sdadasdsadasd"})
 def dajmu_kuki(requests):
-    kolacic = requests.COOKIES.get("idx"," ")
+    kolacic = requests.COOKIES.get("idx","")
+    print(kolacic)
     return JsonResponse({"message":f"{kolacic}"})
 
 def dd(requests):
@@ -36,6 +36,23 @@ def dd(requests):
     return res
 def lol(requests):
     
-    return HttpResponse(neo.getdata(requests.COOKIES.get("idx")) + f"   {requests.COOKIES.get("idx")}")
+    return HttpResponse(neo.getdata(requests.COOKIES.get("idx")))
     #nesto = neo.getdata(requests.COOKIES.get("name"))
     #return JsonResponse({"message":f"{nesto} kolacijc je {requests.COOKIES.get("name")}"})
+def login(requests):
+    ime = requests.GET.get("name")
+    pas = requests.GET.get("password")
+    od = neo.proverin(ime,pas)
+    res = ""
+
+    if(od):
+        res = JsonResponse({"message":""})
+        res.set_cookie("idx","sssss","")
+        print("Hej")
+        return res
+    else:
+        print("hej")
+        return JsonResponse({"message","Nema takovg naloga"})
+def test(requests):
+    nesto = requests.GET.get("id")
+    return HttpResponse(neo.dobijpodatke(nesto))
