@@ -46,13 +46,15 @@ def login(requests):
     res = ""
 
     if(od):
-        res = JsonResponse({"message":""})
-        res.set_cookie("idx","sssss","")
+        res = JsonResponse({"message":"ulogovao si se"})
+        res.set_cookie("idx",neo.dobijid(ime))
         print("Hej")
         return res
     else:
         print("hej")
-        return JsonResponse({"message","Nema takovg naloga"})
+        return JsonResponse({"message":"Nema takovg naloga"})
+   
 def test(requests):
     nesto = requests.GET.get("id")
-    return HttpResponse(neo.dobijpodatke(nesto))
+    print(neo.dobijpodatke(nesto))
+    return HttpResponse(neo.dobijpodatke(nesto)[0]["name"])

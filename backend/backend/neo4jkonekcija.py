@@ -51,12 +51,18 @@ def proverin(ime,sifra):
             return True
         else:
             return False
+def dobijid(ime):
+    with driver.session() as session:
+        res = session.run("MATCH (u:Users) WHERE u.name=$joj RETURN u.id AS id",{
+            "joj":ime
+        })
+        return res.single()["id"]
 def dobijpodatke(idx):
     with driver.session() as session:
-        res = session.run("MATCH (u:Users {id:$idx2})",{
+        res = session.run("MATCH (u:Users) WHERE u.id=$idx2 RETURN u AS sve",{
             "idx2":idx
         })
         li = []
         for i in res:
-            li.append(i.data())
+            li.append(i.data()["sve"])
         return li

@@ -67,8 +67,8 @@ if(r.params.id=="1"){
     console.log(err)
   })
 }else{
-  axios.get(`http://localhost:8000/api/login/?name=${list[0][0]}&password=${list[1][0]}`).then(res => {
-    console.log("Uspesno si se ulogovao" + res.data.message)
+  axios.get(`http://localhost:8000/api/login/?name=${list.value[0][0]}&password=${list.value[1][0]}`).then(res => {
+    console.log("Uspesno si se ulogovao")
   }).catch(err => {
     console.log(err)
   })
