@@ -1,0 +1,41 @@
+.friends{
+    width: 20%;
+    height: 80%;
+    border-radius: 4px;
+    background: rgba(160, 224, 243, 0.158);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
+}
+body{
+    background-image: url(majed-swan-_PvpgpQpHqs-unsplash.jpg);
+    background-position: center;
+    background-size: contain;
+}
+.col-80{
+    height: 90%;
+ 
+}
+.col-20{
+    height: 10%;
+}
+[class*="col-"]{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bhj:hover{
+    background: black;
+    border-radius: 4px;
+    color: white;
+}
+.bhj{
+    width: 80%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -8,7 +8,7 @@ const routes = [
     {path: '/',component:Juj},
     { path: '/register/:id', component: Home },
     { path: '/about', component: Gmail },
-    {path:'/app',component:Aplikacija}
+    {path:'/app/',component:Aplikacija}
   ];
   
   const router = createRouter({

@@ -4,17 +4,17 @@ driver = GraphDatabase.driver("bolt://localhost:7687",auth=("neo4j","12345678"))
 def ikok(ok,password,gmail,id):
   
     with driver.session() as session:
-        session.run('CREATE (u:Users {name:$name,password:$pass,gmail:$gmail,id:$id})',{
+        session.run('CREATE (u:Userd {name:$name,password:$pass,gmail:$gmail,id:$id,verif:$kuk})',{
             "name":ok,
             "pass":password,
             "gmail":gmail,
             "id":id,
-         
+            "kuk":False
         })
 def getAll():
    
     with driver.session() as session:
-        res = session.run("MATCH (u:Users) RETURN u.name AS name,u.gmail AS gmail")
+        res = session.run("MATCH (u:Userd) RETURN u.name AS name,u.gmail AS gmail")
         ol = []
         for i in res:
             ol.append(i.data()['name'])
@@ -33,7 +33,7 @@ def getdata(nes):
 def proveri(name,gmail):
     with driver.session() as session:
         result = session.run("""
-            MATCH (u:Users)
+            MATCH (u:Userd)
             WHERE ($a1 IS NOT NULL AND u.name = $a1)
                OR ($a2 IS NOT NULL AND u.gmail = $a2)
             RETURN u LIMIT 1
@@ -43,7 +43,7 @@ def proveri(name,gmail):
         return result.single() is not None
 def proverin(ime,sifra):
     with driver.session() as session:
-        res = session.run("MATCH (u:Users) WHERE (u.name=$nes1 AND u.password=$nes2) RETURN u.id AS jupi",{
+        res = session.run("MATCH (u:Userd) WHERE (u.name=$nes1 AND u.password=$nes2) RETURN u.id AS jupi",{
             "nes1":ime,
             "nes2":sifra
         })
@@ -53,16 +53,25 @@ def proverin(ime,sifra):
             return False
 def dobijid(ime):
     with driver.session() as session:
-        res = session.run("MATCH (u:Users) WHERE u.name=$joj RETURN u.id AS id",{
+        res = session.run("MATCH (u:Userd) WHERE u.name=$joj RETURN u.id AS id",{
             "joj":ime
         })
         return res.single()["id"]
 def dobijpodatke(idx):
     with driver.session() as session:
-        res = session.run("MATCH (u:Users) WHERE u.id=$idx2 RETURN u AS sve",{
+        res = session.run("MATCH (u:Userd) WHERE u.id=$idx2 RETURN u AS sve",{
             "idx2":idx
         })
         li = []
         for i in res:
             li.append(i.data()["sve"])
         return li
+def uzmisvepodtke(id):
+    with driver.session() as session:
+        res = session.run("MATCH (u:Userd) WHERE u.id = $idx RETURN u AS sve",{
+            "idx":id
+        })
+        ku = []
+        for i in res:
+            ku.append(i.data()["sve"])
+        return ku

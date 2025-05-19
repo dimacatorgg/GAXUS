@@ -13,7 +13,7 @@ def registrujga(requests):
     kmail = requests.GET.get("gmail","jebiga")
     id = str(uuid.uuid4())
     if(neo.proveri(name,kmail)):
-        return HttpResponse(f"d {neo.proveri(name,kmail)}")
+        return JsonResponse({"message":"Vec postji ili ime ili mjl koji korsits"})
     else:
         neo.ikok(name,password,kmail,id)
         res = JsonResponse({"message":f"{requests.COOKIES.get("idx")}"})
@@ -56,5 +56,5 @@ def login(requests):
    
 def test(requests):
     nesto = requests.GET.get("id")
-    print(neo.dobijpodatke(nesto))
-    return HttpResponse(neo.dobijpodatke(nesto)[0]["name"])
+    print(neo.uzmisvepodtke(nesto))
+    return JsonResponse({"message":neo.uzmisvepodtke(nesto)})
