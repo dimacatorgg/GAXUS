@@ -46,7 +46,7 @@ def login(requests):
     res = ""
 
     if(od):
-        res = JsonResponse({"message":"ulogovao si se"})
+        res = JsonResponse({"message":neo.dobijid(ime)})
         res.set_cookie("idx",neo.dobijid(ime))
         print("Hej")
         return res
@@ -58,3 +58,15 @@ def test(requests):
     nesto = requests.GET.get("id")
     print(neo.uzmisvepodtke(nesto))
     return JsonResponse({"message":neo.uzmisvepodtke(nesto)})
+def prijatelj(requests):
+    ime = requests.GET.get("ime")
+    return JsonResponse({"message":neo.prijatelji(ime)})
+def addd(requests):
+    user1 = requests.GET.get("user1")
+    user2 = requests.GET.get("user2")
+    res = neo.friendadd(user1,user2)
+    print("Sada supritjaljei")
+    return JsonResponse({"message":"sad"})
+def hju(requests):
+    ju = requests.GET.get("user")
+    return JsonResponse({"message":neo.prijatelj(ju)})

@@ -4,11 +4,13 @@ import gmail from "./gmail.vue";
 import Gmail from "./gmail.vue";
 import Juj from "./Juj.vue";
 import Aplikacija from "./aplikacija.vue";
+import Lista from "./Lista.vue";
 const routes = [
     {path: '/',component:Juj},
     { path: '/register/:id', component: Home },
     { path: '/about', component: Gmail },
-    {path:'/app/',component:Aplikacija}
+    {path:'/app/',component:Aplikacija},
+    {path:'/friends',component:Lista}
   ];
   
   const router = createRouter({

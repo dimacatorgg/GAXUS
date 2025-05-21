@@ -69,11 +69,12 @@ if(r.params.id=="1"){
     console.log(err)
   })
 }else{
-  axios.get(`http://localhost:8000/api/login/?name=${list.value[0][0]}&password=${list.value[1][0]}`).then(res => {
+  axios.get(`http://localhost:8000/api/login/?name=${list.value[0][0]}&password=${list.value[1][0]}`,{
+    withCredentials:true
+  }).then(res => {
     console.log("Uspesno si se ulogovao")
-    const korisnik = axios.get(`http://localhost:8000/test/?id=${res.data.message}`,{withCredentials:true}).then(r =>{ localStorage.setItem("user",JSON.stringify(r.data.message[0]));console.log(r.data.message)}).catch(err => console.log(err))
-    
-    console.log(korisnik);
+   axios.get(`http://localhost:8000/test/?id=${res.data.message}`,{withCredentials:true}).then(r =>{ localStorage.setItem("user",JSON.stringify(r.data.message[0]));console.log(r.data.message)}).catch(err => console.log(err))
+
   }).catch(err => {
     console.log(err)
   })

@@ -75,3 +75,28 @@ def uzmisvepodtke(id):
         for i in res:
             ku.append(i.data()["sve"])
         return ku
+def prijatelji(name):
+    with driver.session() as session:
+        ref = session.run("MATCH (u:Userd) WHERE u.name =~ $kok RETURN u AS sve", {
+            "kok": f".*{name}.*"
+        })
+        hir = []
+        for i in ref:
+            hir.append(i.data()["sve"])
+        return hir
+def friendadd(user1,user2):
+    with driver.session() as session:
+        session.run("MATCH (u1:Userd {name:$user1}), (u2:Userd {name:$user2}) MERGE (u1)-[:FRIEND]->(u2)",{
+            "user1":user1,
+            "user2":user2
+        })
+        return "Sada ste prijatelji"
+def prijatelj(user):
+    with driver.session() as session:
+        h = session.run("MATCH (u:Userd {name:$k})-[:FRIEND]->(friend) RETURN friend AS sve",{
+            "k":user
+        })
+        gu = []
+        for i in h:
+            gu.append(i.data()["sve"])
+        return gu

@@ -4,6 +4,7 @@
 
         </div>
         <router-link to="/friends/" class="col-20 bhj">No People here find some here</router-link>
+     
     </div>
 
 </template>

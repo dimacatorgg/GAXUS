@@ -28,5 +28,8 @@ urlpatterns = [
     path('api/kuki/',views.dd,name="sdasd"),
     path('api/lol/',views.lol,name="sadasd"),
     path('api/login/',views.login,name="Mjaju"),
-    path('test/',views.test,name="sdad")
+    path('test/',views.test,name="sdad"),
+    path('api/prijatelj/',views.prijatelj,name="dasdasdasd"),
+    path('api/add/',views.addd,name="sdasd"),
+    path('api/prijateljd/',views.hju,name="dsada")
 ]

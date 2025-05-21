@@ -15,9 +15,10 @@ onMounted(() => {
 gg.value = false;
 setTimeout(function(){
   if(localStorage.getItem("user")){
-  localStorage.removeItem("user")
+  localStorage.removeItem("user");
+  console.log("Uradjneo iz App.vue")
 }
-},3000)
+},1000)
   }else{
     console.log(res.data.message)
     gg.value = true;
