@@ -65,8 +65,12 @@ def addd(requests):
     user1 = requests.GET.get("user1")
     user2 = requests.GET.get("user2")
     res = neo.friendadd(user1,user2)
-    print("Sada supritjaljei")
+    print(res)
     return JsonResponse({"message":"sad"})
 def hju(requests):
     ju = requests.GET.get("user")
     return JsonResponse({"message":neo.prijatelj(ju)})
+def tyes(requests):
+    u1 = requests.GET.get("user1")
+    u2 = requests.GET.get("user2")
+    return JsonResponse({"message":neo.dodaj(u1,u2)})

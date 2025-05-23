@@ -12,8 +12,11 @@ const podaci = ref(null)
 const search = ref('');
 const prijatelji = ref(null)
 watch(search, () => {
-   axios.get(`http://localhost:8000/api/prijatelj/?ime=${search.value}`).then(res => {podaci.value = res.data.message}).catch(err => console.log("Neka Greska"))
-    axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => prijatelji.value = res.data.message).catch(err => console.log(err))
+    if(search.value!=""){
+   axios.get(`http://localhost:8000/api/prijatelj/?ime=${search.value}`).then(res => {podaci.value = res.data.message}).catch(err => console.log("Neka Greska"));
+   axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => prijatelji.value = res.data.message).catch(err => console.log(err))
+    }
+  
 
 })
 /*watch(prijatelji.value,() => {
@@ -23,7 +26,7 @@ watch(search, () => {
 })*/
  function addFriend(user2){
      axios.get(`http://localhost:8000/api/add/?user1=${JSON.parse(localStorage.getItem("user")).name}&user2=${user2}`).then(res => {return res}).catch(err => console.log(err));
-console.log("Sad ste prijatelji")
+console.log("Sad ste prijatelji");
 
 }
 </script>

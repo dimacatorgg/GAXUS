@@ -86,11 +86,11 @@ def prijatelji(name):
         return hir
 def friendadd(user1,user2):
     with driver.session() as session:
-        session.run("MATCH (u1:Userd {name:$user1}), (u2:Userd {name:$user2}) MERGE (u1)-[:FRIEND]->(u2)",{
+        session.run("MATCH (u1:Userd {name:$user1}), (u2:Userd {name:$user2}) CREATE (u1)-[:FRIEND]->(u2)",{
             "user1":user1,
             "user2":user2
         })
-        return "Sada ste prijatelji"
+        return "Hju"
 def prijatelj(user):
     with driver.session() as session:
         h = session.run("MATCH (u:Userd {name:$k})-[:FRIEND]->(friend) RETURN friend AS sve",{
@@ -100,3 +100,11 @@ def prijatelj(user):
         for i in h:
             gu.append(i.data()["sve"])
         return gu
+def dodaj(k1,k2):
+    with driver.session() as session:
+        session.run("MATCH (u1:Userd {name:$ko}),(u2:Userd {name:$ko2}) WITH u1,u2 CREATE (u1)-[:FRIENDY]->(u2)",{
+            "ko":k1,
+            "ko2":k2
+        })
+       
+        return "ddfsd"
