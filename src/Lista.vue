@@ -2,23 +2,45 @@
 
 import {useRouter} from "vue-router";
 import axios from "axios";
-import {ref,watch,reactive} from "vue"
+import {ref,watch,reactive,computed} from "vue"
 const router = useRouter();
-
+const korinsik = computed(() => {
+    return localStorage.getItem("user")!=''?JSON.parse(localStorage.getItem("user")) : null;
+})
+console.log(korinsik.value)
 if(!localStorage.getItem("user")){
     router.push('/register/1/')
 }
+const paralel = ref([]);
 const podaci = ref(null)
 const search = ref('');
 const prijatelji = ref(null)
-watch(search, () => {
+
+watch(search, async () => {
+    const radi = ref(null)
     if(search.value!=""){
-   axios.get(`http://localhost:8000/api/prijatelj/?ime=${search.value}`).then(res => {podaci.value = res.data.message}).catch(err => console.log("Neka Greska"));
-   axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => prijatelji.value = res.data.message).catch(err => console.log(err))
+  await axios.get(`http://localhost:8000/api/prijatelj/?ime=${search.value}`).then(res => {podaci.value = res.data.message,radi.value=res.data.message}).catch(err => console.log("Neka Greska"));
+ await  axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => prijatelji.value = res.data.message).catch(err => console.log(err))
+
+   paralel.value = await radi.value.map(elem => [elem,false])
+for(var i=0;i<paralel.value.length;i++){
+    for(var j =0;j<prijatelji.value.length;j++){
+        if(paralel.value[i][0].name == prijatelji.value[j].name){
+           
+            paralel.value[i][1] = true;
+            break;
+        }
+        else{
+            continue;
+        }
     }
-  
+}
+
+
+    }
 
 })
+
 /*watch(prijatelji.value,() => {
   podaci.value.forEach(element => {
     
@@ -27,26 +49,47 @@ watch(search, () => {
  function addFriend(user2){
      axios.get(`http://localhost:8000/api/add/?user1=${JSON.parse(localStorage.getItem("user")).name}&user2=${user2}`).then(res => {return res}).catch(err => console.log(err));
 console.log("Sad ste prijatelji");
-
+search.value+=" ";
+setTimeout(function(){
+    search.value = search.value.slice(0,-1)
+},10)
+}
+function removeS(koje){
+    axios.get(`http://localhost:8000/api/del/?user1=${korinsik.value.name}&user2=${koje}`).then(res => console.log("Sve je okje odradjeno")).catch(err => console.log(err))
+    search.value+=" "
+    setTimeout(function(){
+    search.value = search.value.slice(0,-1)
+},10)
 }
 </script>
 <template>
     <div class="users">
+        
         <input type="text" class="search" v-model="search">
+       
         <div class="list">
             <img>
-            <div class="prijatelji" v-for="jojs in podaci">
+        
+            <div class="prijatelji" v-for="(jojs,index) in paralel" :key="index">
                 
-                    <div class="add" @click="addFriend(jojs.name)">Add Friend</div>
-                <div class="jname">Ime:{{ jojs.name }}</div>
-                <div class="jgmail">gmail:{{ jojs.gmail }}</div>
+                    <div class="add" @click="addFriend(jojs[0].name)" v-if="!paralel[index][1]">Add Friend</div>
+                    <div v-else class="add r" @click="removeS(jojs[0].name)">Vec Ste prijatelji</div>
+                <div class="jname">Ime:{{ jojs[0].name }}</div>
+                <div class="jgmail">gmail:{{ jojs[0].name }}</div>
                 <div class="ver">
           
                  <img width="30px" height="30px" src="./assets/upitnik-removebg-preview.png" v-if="!jojs.verif">
                  <img v-else width="30px" height="30px" src="./lol.png">
                 </div>
             </div>
-            <div v-if="!podaci">Lodaing</div>
+            <div class="podaci" v-if="!podaci">
+                Loading
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

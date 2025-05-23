@@ -74,3 +74,8 @@ def tyes(requests):
     u1 = requests.GET.get("user1")
     u2 = requests.GET.get("user2")
     return JsonResponse({"message":neo.dodaj(u1,u2)})
+def delg(requests):
+    u1 = requests.GET.get("user1")
+    u2 = requests.GET.get("user2")
+    neo.delete(u1,u2)
+    return JsonResponse({'message':'uradjeno'})

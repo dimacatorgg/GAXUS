@@ -4,7 +4,7 @@ import {ref} from "vue"
 import axios from 'axios';
 const poki = ref(null)
     onMounted(() => {
-          axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => poki.value = res.data.message).catch(err => poki.value = null);
+          axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => poki.value = res.data.message).catch(err => console.log(err));
     });
 
 </script>
@@ -13,6 +13,11 @@ const poki = ref(null)
         <div class="lists col-80">
             <div class="podaci" v-if="poki==null">
                 Loading
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
             </div>
             <div class="kpodaci" v-else>
                 <div class="friend" v-for="koki in poki">
@@ -25,7 +30,7 @@ const poki = ref(null)
                                 <span class="ibgs">
                                     <img src="/src/assets/ChatGPT_Image_May_23__2025__11_04_59_AM-removebg-preview.png" width="25px" height="25px">
                                 </span>
-                                <span class="itext"></span>
+                                <span class="itext">Profile</span>
                             </div>
                         </div>
                     </div>

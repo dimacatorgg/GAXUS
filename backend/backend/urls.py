@@ -32,5 +32,6 @@ urlpatterns = [
     path('api/prijatelj/',views.prijatelj,name="dasdasdasd"),
     path('api/add/',views.addd,name="sdasd"),
     path('api/prijateljd/',views.hju,name="dsada"),
-    path('api/ty/',views.tyes,name="sdasd")
+    path('api/ty/',views.tyes,name="sdasd"),
+    path('api/del/',views.delg,name="sdasd")
 ]
