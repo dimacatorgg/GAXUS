@@ -83,3 +83,7 @@ def sigma(requests):
     user= requests.GET.get("user")
     info = neo.sigma(user)
     return JsonResponse({"message":info})
+def prvoeri(requests):
+    u1,u2 = requests.GET.get("user1"),requests.GET.get("user2")
+    kuk  = neo.friendcheck(u1,u2)
+    return JsonResponse({"message":kuk})

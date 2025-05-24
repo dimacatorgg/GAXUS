@@ -126,3 +126,10 @@ def sigma(user):
             return kuk[0]["sve"]
         else:
             return "Nema takovg korniska prestani da hakijes"
+def friendcheck(u1,u2):
+    with driver.session() as session:
+        run = session.run("MATCH (u1:Userd {name:$u1}),(u2:Userd {name:$u2}) MATCH (u1)-[r:FRIENDY]->(u2) RETURN COUNT(r) AS broj ",{
+            "u1":u1,
+            "u2":u2
+        })
+        return run.data()[0]["broj"]
