@@ -29,7 +29,7 @@ const podaci = ref(null)
 
 
 
-
+console.log(document.cookie)
 
 
 const r = useRoute()
@@ -64,7 +64,7 @@ if(r.params.id=="1"){
   }).then(res => {
      axios.get(`http://localhost:8000/test/?id=${res.data.message}`,{withCredentials:true}).then(r => { localStorage.setItem("user",JSON.stringify(r.data.message[0])
      
-     ); useRouter().replace("/app")}).catch(err => console.log(err))
+     );setTimeout(function(){useRouter().replace("/app")},300) }).catch(err => console.log(err))
 
     console.log(localStorage.getItem("user"));
   }).catch(err => {
@@ -75,7 +75,7 @@ if(r.params.id=="1"){
     withCredentials:true
   }).then(res => {
     console.log("Uspesno si se ulogovao")
-   axios.get(`http://localhost:8000/test/?id=${res.data.message}`,{withCredentials:true}).then(r =>{ localStorage.setItem("user",JSON.stringify(r.data.message[0]));useRouter().replace("/app");console.log(r.data.message)}).catch(err => console.log(err))
+   axios.get(`http://localhost:8000/test/?id=${res.data.message}`,{withCredentials:true}).then(r =>{ localStorage.setItem("user",JSON.stringify(r.data.message[0]));setTimeout(function(){useRouter().replace("/app")},300);console.log(r.data.message)}).catch(err => console.log(err))
 
   }).catch(err => {
     console.log(err)

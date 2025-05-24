@@ -115,3 +115,14 @@ def delete(k1,k2):
             "k2":k2
         })
         return "Uspeno uradjeno"
+def sigma(user):
+    with driver.session() as session:
+        run = session.run("MATCH (u:Userd) WHERE u.name=$name RETURN u AS sve",{
+            "name":user
+        })
+        kuk = run.data()
+        if kuk:
+
+            return kuk[0]["sve"]
+        else:
+            return "Nema takovg korniska prestani da hakijes"

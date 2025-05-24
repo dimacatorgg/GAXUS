@@ -50,3 +50,38 @@
         background: rgb(238, 238, 238);
     }
 }
+.korisnik{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top: 0;
+    transition: all 0.5s;
+    border-radius: 3px;
+    opacity: 0;
+    z-index: -10;
+    left: 0;
+    background: url(matthew-stephenson-DGCGex-I47A-unsplash.jpg);
+}
+.korisnik .rel{
+    background: rgba(255, 255, 255, 0.151);
+    backdrop-filter: blur(2px);
+}
+.korisnik.ac{
+    opacity: 1;
+    z-index: 5;
+}
+.backg{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 18px;
+    cursor: pointer;
+    left: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.backg:hover{
+    background: rgb(167, 167, 167);
+}

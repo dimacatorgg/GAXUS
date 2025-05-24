@@ -79,3 +79,7 @@ def delg(requests):
     u2 = requests.GET.get("user2")
     neo.delete(u1,u2)
     return JsonResponse({'message':'uradjeno'})
+def sigma(requests):
+    user= requests.GET.get("user")
+    info = neo.sigma(user)
+    return JsonResponse({"message":info})

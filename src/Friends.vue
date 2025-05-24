@@ -2,11 +2,16 @@
 import { onMounted } from 'vue';
 import {ref} from "vue"
 import axios from 'axios';
+import { defineEmits } from 'vue';
+const emit = defineEmits(["profil"],["prijatelj"]);
 const poki = ref(null)
     onMounted(() => {
           axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => poki.value = res.data.message).catch(err => console.log(err));
     });
+function nesto(k){
+    emit("profil",k)
 
+}
 </script>
 <template>
     <div class="friends">
@@ -30,7 +35,7 @@ const poki = ref(null)
                                 <span class="ibgs">
                                     <img src="/src/assets/ChatGPT_Image_May_23__2025__11_04_59_AM-removebg-preview.png" width="25px" height="25px">
                                 </span>
-                                <span class="itext">Profile</span>
+                                <span class="itext" @click="nesto(koki.name)">Profile</span>
                             </div>
                         </div>
                     </div>

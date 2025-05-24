@@ -2,6 +2,7 @@
 import {ref,watch,computed,onMounted, Static} from "vue";
 import Settigns from "./Settigns.vue";
 import Friends from "./Friends.vue";
+import Korisnik from "./korisnik.vue";
 const hover = ref([false,false])
 watch(hover.value,function(novo) {
     novo.forEach((item,index) => {
@@ -61,10 +62,18 @@ console.log(nulaminuti.value)
 });
 
 const si =ref(false);
+const joj = ref(false);
+const taj = ref('');
+function profilg(user){
+    joj.value=true;
+    taj.value=user;
+    console.log(taj.value)
+}
 </script>
 
 <template>
     <div class="apps">
+
       <!-- <Settigns :klik="si"></Settigns>-->
         <div class="app-options">
             <div class="aleft">
@@ -94,7 +103,9 @@ const si =ref(false);
 
         </div>
         <div class="dole">
-            <Friends></Friends>
+            <Friends @profil="(s) => profilg(s)"></Friends>
         </div>
+      
+        <Korisnik :pro="joj" @ko="(s) => joj = s"  :user="taj"></Korisnik>
     </div>
 </template>
