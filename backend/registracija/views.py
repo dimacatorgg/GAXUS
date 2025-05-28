@@ -2,8 +2,18 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import HttpResponse
 import uuid
-from .models import User
+import backend.postSQL as postSQL
 import backend.neo4jkonekcija as neo
+import clickhouse_connect
+from .models import Post
+if __name__ == '__main__':
+    client = clickhouse_connect.get_client(
+        host='wa7wr7nrxf.europe-west4.gcp.clickhouse.cloud',
+        user='default',
+        password='i_R9O2aceVliw',
+        secure=True
+    )
+    print("Result:", client.query("SELECT 1").result_set[0][0])
 def home(requests):
     return HttpResponse(f"{requests.GET.get("ime")}")
 
@@ -87,3 +97,10 @@ def prvoeri(requests):
     u1,u2 = requests.GET.get("user1"),requests.GET.get("user2")
     kuk  = neo.friendcheck(u1,u2)
     return JsonResponse({"message":kuk})
+def novitest(requests):
+    postSQL.create()
+    ja = postSQL.joj(requests.GET.get("name"))
+    print(ja)
+    return HttpResponse(ja)
+def nntest(requests):
+    return HttpResponse(postSQL.getAll())

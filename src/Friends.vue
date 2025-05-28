@@ -6,12 +6,16 @@ import { defineEmits } from 'vue';
 const emit = defineEmits(["profil"],["prijatelj"]);
 const poki = ref(null)
     onMounted(() => {
-          axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => poki.value = res.data.message).catch(err => console.log(err));
+        setInterval(function(){
+            axios.get(`http://localhost:8000/api/prijateljd/?user=${JSON.parse(localStorage.getItem("user")).name}`).then(res => poki.value = res.data.message).catch(err => console.log(err));
+        },1000)
+       
     });
 function nesto(k){
     emit("profil",k)
 
 }
+
 </script>
 <template>
     <div class="friends">

@@ -1,6 +1,6 @@
 <script setup>
 import {ref,watch,computed,onMounted, Static} from "vue";
-import Settigns from "./Settigns.vue";
+import Settignsd from "./Settigns.vue";
 import Friends from "./Friends.vue";
 import Korisnik from "./korisnik.vue";
 const hover = ref([false,false])
@@ -69,13 +69,20 @@ function profilg(user){
     taj.value=user;
     console.log(taj.value)
 }
+const jopen = ref(false)
+function jel(){
+    jopen.value = true;
+    console.log(jopen.value)
+}
 </script>
 
 <template>
+    
     <div class="apps">
-
-      <!-- <Settigns :klik="si"></Settigns>-->
+        <Settignsd @closed="(msg) => jopen=msg" :klik="jopen"></Settignsd>
+       
         <div class="app-options">
+        
             <div class="aleft">
                 <div class="app-user">
                     <div class="hover"></div>
@@ -96,7 +103,8 @@ function profilg(user){
             </div>
         <div class="app-center" ref="sigma"><span class="sati">{{nulasati ? "0" : ""}}{{ sate }}</span>:<span class="minuti">{{nulaminuti ? "0" : ""}}{{ minute}}</span></div>
             <div class="aright">
-                <div class="roptions" @click="si = !si">Settings</div>
+                <div class="roptions" @click="jel()" :klik="jopen">Settings</div>
+               
                 <div class="roptions">Explore</div>
                 <div class="roptions">Competions</div>
             </div>

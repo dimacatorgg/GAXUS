@@ -35,5 +35,7 @@ urlpatterns = [
     path('api/ty/',views.tyes,name="sdasd"),
     path('api/del/',views.delg,name="sdasd"),
     path('api/sigma/',views.sigma,name="sdasda"),
-    path('api/check/',views.prvoeri,name="Nesto")
+    path('api/check/',views.prvoeri,name="Nesto"),
+    path('api/ntest/',views.novitest,name="Nesto"),
+    path('api/nntest/',views.nntest,name="sdsd")
 ]

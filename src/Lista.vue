@@ -2,7 +2,11 @@
 
 import {useRouter} from "vue-router";
 import axios from "axios";
-import {ref,watch,reactive,computed} from "vue"
+import {ref,watch,reactive,computed} from "vue";
+import { addFrined } from "./pinias/addFriend";
+import { removefriend } from "./pinias/removefriend";
+const rev = removefriend();
+const gg = addFrined();
 const router = useRouter();
 const korinsik = computed(() => {
     return localStorage.getItem("user")!=''?JSON.parse(localStorage.getItem("user")) : null;
@@ -46,7 +50,7 @@ for(var i=0;i<paralel.value.length;i++){
     
   });
 })*/
- function addFriend(user2){
+ function addFriendg(user2){
      axios.get(`http://localhost:8000/api/add/?user1=${JSON.parse(localStorage.getItem("user")).name}&user2=${user2}`).then(res => {return res}).catch(err => console.log(err));
 console.log("Sad ste prijatelji");
 search.value+=" ";
@@ -55,8 +59,15 @@ setTimeout(function(){
 },10)
 }
 function removeS(koje){
-    axios.get(`http://localhost:8000/api/del/?user1=${korinsik.value.name}&user2=${koje}`).then(res => console.log("Sve je okje odradjeno")).catch(err => console.log(err))
+    rev.remove(korinsik.value.name,koje);
     search.value+=" "
+    setTimeout(function(){
+    search.value = search.value.slice(0,-1)
+},10)
+}
+function hejbre(user1,user2){
+    gg.addFriendG(user1,user2);
+     search.value+=" "
     setTimeout(function(){
     search.value = search.value.slice(0,-1)
 },10)
@@ -72,7 +83,7 @@ function removeS(koje){
         
             <div class="prijatelji" v-for="(jojs,index) in paralel" :key="index">
                 
-                    <div class="add" @click="addFriend(jojs[0].name)" v-if="!paralel[index][1]">Add Friend</div>
+                    <div class="add" @click="hejbre(korinsik.name,jojs[0].name)"  v-if="!paralel[index][1]">Add Friend</div>
                     <div v-else class="add r" @click="removeS(jojs[0].name)">Vec Ste prijatelji</div>
                 <div class="jname">Ime:{{ jojs[0].name }}</div>
                 <div class="jgmail">gmail:{{ jojs[0].name }}</div>

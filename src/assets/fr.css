@@ -209,3 +209,18 @@ body{
     z-index: 10;
     float: left;
 }
+.apps{
+    margin-top: 40px;
+}
+.hbo{
+    padding: 6px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.hbo:hover{
+    background: white;
+    color: black;
+}
