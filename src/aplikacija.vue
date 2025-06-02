@@ -3,6 +3,7 @@ import {ref,watch,computed,onMounted, Static} from "vue";
 import Settignsd from "./Settigns.vue";
 import Friends from "./Friends.vue";
 import Korisnik from "./korisnik.vue";
+import info from "./info.vue";
 const hover = ref([false,false])
 watch(hover.value,function(novo) {
     novo.forEach((item,index) => {
@@ -74,13 +75,20 @@ function jel(){
     jopen.value = true;
     console.log(jopen.value)
 }
+const gg = ref(false)
+function hej(){
+    gg.value=false
+}
+function gf(){
+    gg.value = true
+}
 </script>
 
 <template>
     
     <div class="apps">
-        <Settignsd @closed="(msg) => jopen=msg" :klik="jopen"></Settignsd>
-       
+        <Settignsd @closed="(msg) => jopen=msg" :klik="jopen" @openg="(m) => gf()"></Settignsd>
+       <info @otvoreno="(m) => hej()" :otvoreno="gg"></info>
         <div class="app-options">
         
             <div class="aleft">

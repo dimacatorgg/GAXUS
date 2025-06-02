@@ -6,6 +6,7 @@ import backend.postSQL as postSQL
 import backend.neo4jkonekcija as neo
 import clickhouse_connect
 from .models import Post
+from django.core.mail import send_mail
 if __name__ == '__main__':
     client = clickhouse_connect.get_client(
         host='wa7wr7nrxf.europe-west4.gcp.clickhouse.cloud',
@@ -104,3 +105,17 @@ def novitest(requests):
     return HttpResponse(ja)
 def nntest(requests):
     return HttpResponse(postSQL.getAll())
+def sentmail(requests):
+    send_mail(
+        'Veriufy Code',
+        requests.GET.get("text"),
+        "paypaldimitrijr@gmail.com",
+        ['dimitrijebrzh@gmail.com'],
+        fail_silently=False
+    )
+    return JsonResponse({"message":"true"})
+def about(requests):
+    dats = requests.GET.get("data")
+    id = requests.GET.get("id")
+    postSQL.userIfno(dats,id)
+    return JsonResponse({'message':"Uradjeno"})

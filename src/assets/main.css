@@ -11,6 +11,8 @@ body{
   height: 100vh;
   overflow: hidden;
   padding: 0;
+ 
+
 }
 *{
   position:relative;
@@ -321,4 +323,16 @@ button.anime{
   width: 70px;
   height: 70px;
 
+}
+textarea{
+  width: 200px;
+ padding: 10px;
+  margin-right: auto;
+  margin-left: 30px;
+  resize: vertical;
+  transition: all 0s;
+ 
+  border: 3px solid black;
+  outline: none;
+  border-radius: 10px;
 }

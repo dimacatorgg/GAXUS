@@ -6,23 +6,23 @@ const porps = defineProps({
     hv:Boolean
 })
 const huj = ref([]);
-for(var i=0;i<porps.gg;i++){
+for(var i=0;i<Number(porps.gg);i++){
     huj.value.push([''])
 }
 
 const ins = ref(null);
 onMounted(() => {
     for(var i=0;i<ins.value.length;i++){
-        ins.value[i].style.width = ins.value[i].parentElement.offsetWidth/Number(porps.gg) + "px";
-        ins.value[i].style.height = ins.value[i].parentElement.offsetHeight/Number(porps.gg) + "px";
-        ins.value[i].style.transition = "all " + 2/i +"s";
-      
+        ins.value[i].style.width = Math.floor(ins.value[i].parentElement.offsetWidth/3) -1 + "px";
+        ins.value[i].style.height = ins.value[i].parentElement.offsetHeight/Number(porps.gg) + 10 + "px";
+        ins.value[i].style.transition = "all " + (porps.gg/5)/i +"s";
      
     }
+
 })
 const isHover = computed(() =>  porps.hv)
 watch(isHover,() => {
-    console.log("Promenia")
+
     if(isHover.value==true){
         for(var i=0;i<ins.value.length;i++){
         ins.value[i].classList.add("red")
@@ -45,10 +45,11 @@ watch(isHover,() => {
 <template>
 
 <div class="animgo">
+    <div class="rel">
     <div class="blocksd" v-for="hj,index in huj" ref="ins" :key="index">
        
     </div>
-    
+    </div>
 </div>
 
 

@@ -37,5 +37,7 @@ urlpatterns = [
     path('api/sigma/',views.sigma,name="sdasda"),
     path('api/check/',views.prvoeri,name="Nesto"),
     path('api/ntest/',views.novitest,name="Nesto"),
-    path('api/nntest/',views.nntest,name="sdsd")
+    path('api/nntest/',views.nntest,name="sdsd"),
+    path('api/verify/',views.sentmail,name="sasdasdasdasdasdasdasdasdasd"),
+    path('api/anout/',views.about,name="Sdasdasdasdada")
 ]

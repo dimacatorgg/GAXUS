@@ -9,10 +9,11 @@ import Test from "./test.vue";
 const routes = [
     {path: '/',component:Juj},
     { path: '/register/:id', component: Home },
-    { path: '/about', component: Gmail },
+   
     {path:'/app/',component:Aplikacija},
     {path:'/friends',component:Lista},
-    {path:'/test/',component:Test}
+    {path:'/test/',component:Test},
+    {path:'/gmail/',component:Gmail}
   ];
   
   const router = createRouter({
