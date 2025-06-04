@@ -1,11 +1,14 @@
 <script setup>
-    import {ref} from "vue";
+    import {onMounted, ref, watch} from "vue";
     import { defineEmits } from "vue";
     import animback from "./animationblocks/animback.vue";
     import axios from "axios";
-    import {gg} from "./pinias/gg"
-    const userg = gg();
+    import {userreal} from "./pinias/gg"
+import { walk } from "vue/compiler-sfc";
+    const userg = userreal();
+    const kori =userg.gg();
     const si  = ref(false);
+    const vre = ref("Hello your histroy wait for you")
     const emits = defineEmits(["closed"],["openg"])
     const props = defineProps({
         klik:Boolean
@@ -25,11 +28,20 @@
     function hopen(){
         emits("openg","kj")
     }
-    function updateh(poruka){
-        if(userg){
-        axios.get(`http://localhost:8000/api/anout/?id=${userg.idx}&`)
+    const texta = ref("");
+    function updateh(){
+        if(kori){
+          console.log(kori.id)
+        axios.get(`http://localhost:8000/api/anout/?id=${kori.id}&data=${texta.value}`)
         }
     }
+    onMounted(async () => {
+        console.log("asdasdasdasdasdasd")
+        vre.value = await axios.get(`http://localhost:8000/api/getabout/?name=${kori.id}`).then(res => {vre.value = res.data.message;console.log("SAdasd")}).catch(err => console.log(err));
+    })
+    watch(vre.value,() => {
+        console.log(vre.value)
+    })
 </script>
 <template>
       <div class="options" :class={opj:props.klik}>
@@ -73,10 +85,12 @@
 
                         </p>
                         <div class="cell start">
-                        <textarea name="" id="">
-                            here
+                        <textarea name="" id="" v-model="texta">
+                           {{ vre }}
+                           
                         </textarea>
-                        <button>Update Data</button>
+                  
+                        <button @click="updateh()">Update Data</button>
                         </div>
                            </div>
                            <br><br><br><br><br>

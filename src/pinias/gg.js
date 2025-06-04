@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 export  const userreal = defineStore('userinfo',() => {
-    function korinsikg(){
+    function gg(){
     const tryd = JSON.parse(localStorage.getItem("user"));
     if(tryd){
         console.log("Sigma")
@@ -10,5 +10,5 @@ export  const userreal = defineStore('userinfo',() => {
         return false;
     }
 }
-return {korinsikg}
+return {gg}
 })

@@ -11,7 +11,8 @@ const emit = defineEmits(["otvoreno"]);
 function zatvori(){
     emit("otvoreno","hej")
 }
-const h = userreal().korinsik();
+const g = userreal();
+const h = g.gg();
 </script>
 
 

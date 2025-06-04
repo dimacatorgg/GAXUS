@@ -39,5 +39,6 @@ urlpatterns = [
     path('api/ntest/',views.novitest,name="Nesto"),
     path('api/nntest/',views.nntest,name="sdsd"),
     path('api/verify/',views.sentmail,name="sasdasdasdasdasdasdasdasdasd"),
-    path('api/anout/',views.about,name="Sdasdasdasdada")
+    path('api/anout/',views.about,name="Sdasdasdasdada"),
+    path('api/getabout/',views.getabout,name="sdsadsa")
 ]

@@ -20,16 +20,26 @@ const podaci = ref('');
 const pup = checkFriend();
 const prijatelji = ref(false);
 const userRef = computed(() => props.user);
-
+const about = ref('')
+watch(userRef,async () => {
+    about.value = about.value = await  axios.get(`http://localhost:8000/api/getabout/?name=${podaci.value.idx}`).then(res => {return res.data.message;}).catch(err => console.log(err))
+})
 watchEffect(async () => {
     if(userRef){
     axios.get(`http://localhost:8000/api/sigma/?user=${userRef.value}`).then(res => {podaci.value=res.data.message;
    
+    
+    
+    
+    
     }).catch(err => console.log(err));
+    
     prijatelji.value = await pup.checkg(JSON.parse(localStorage.getItem("user")).name,userRef.value)
 }
    
 });
+
+
 function removes(k,g){
     gr.remove(k,g);
     console.log("unfriend");
@@ -50,6 +60,7 @@ function removes(k,g){
                     <div class="gmail">{{ podaci.gmail }}</div>
                     <div class="hbo" v-if="prijatelji" @click="removes(korisnik.name,podaci.name)">Unfollow</div>
                     <div v-else class="hbo">Follow</div>
+                    {{ about }}
                 </div>
             </div>
         </div>

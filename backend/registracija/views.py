@@ -119,3 +119,6 @@ def about(requests):
     id = requests.GET.get("id")
     postSQL.userIfno(dats,id)
     return JsonResponse({'message':"Uradjeno"})
+def getabout(requests):
+    user1 = requests.GET.get("name")
+    return JsonResponse({"message":postSQL.getDatag(user1)})
