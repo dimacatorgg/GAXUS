@@ -21,8 +21,8 @@ const pup = checkFriend();
 const prijatelji = ref(false);
 const userRef = computed(() => props.user);
 const about = ref('')
-watch(userRef,async () => {
-    about.value = about.value = await  axios.get(`http://localhost:8000/api/getabout/?name=${podaci.value.idx}`).then(res => {return res.data.message;}).catch(err => console.log(err))
+watch(userRef, () => {
+    about.value = about.value =   axios.get(`http://localhost:8000/api/getabout/?name=${podaci.value.idx}`).then(res => {return res.data.message[0].about;}).catch(err => console.log(err))
 })
 watchEffect(async () => {
     if(userRef){
@@ -61,6 +61,9 @@ function removes(k,g){
                     <div class="hbo" v-if="prijatelji" @click="removes(korisnik.name,podaci.name)">Unfollow</div>
                     <div v-else class="hbo">Follow</div>
                     {{ about }}
+                <textarea class="type">Enter you comment on this account
+                </textarea>
+                <div class="ybn">Submit Comment</div>
                 </div>
             </div>
         </div>

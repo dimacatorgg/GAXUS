@@ -224,3 +224,13 @@ body{
     background: white;
     color: black;
 }
+.ybn{
+    width: 400px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.959);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+}

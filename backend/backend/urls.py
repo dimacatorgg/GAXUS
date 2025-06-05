@@ -40,5 +40,6 @@ urlpatterns = [
     path('api/nntest/',views.nntest,name="sdsd"),
     path('api/verify/',views.sentmail,name="sasdasdasdasdasdasdasdasdasd"),
     path('api/anout/',views.about,name="Sdasdasdasdada"),
-    path('api/getabout/',views.getabout,name="sdsadsa")
+    path('api/getabout/',views.getabout,name="sdsadsa"),
+    path('api/nes/',views.nesto,name="sdsadasd")
 ]

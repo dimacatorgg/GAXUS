@@ -29,19 +29,21 @@ import { walk } from "vue/compiler-sfc";
         emits("openg","kj")
     }
     const texta = ref("");
+    const fj = ref(false);
+    const prikzi = ref(false)
     function updateh(){
+        prikzi.value = true;
         if(kori){
           console.log(kori.id)
-        axios.get(`http://localhost:8000/api/anout/?id=${kori.id}&data=${texta.value}`)
+        axios.get(`http://localhost:8000/api/anout/?id=${kori.id}&data=${texta.value}`).then(res => prikzi.value=false).catch(err => console.log(err))
         }
     }
-    onMounted(async () => {
+    onMounted( () => {
         console.log("asdasdasdasdasdasd")
-        vre.value = await axios.get(`http://localhost:8000/api/getabout/?name=${kori.id}`).then(res => {vre.value = res.data.message;console.log("SAdasd")}).catch(err => console.log(err));
+         axios.get(`http://localhost:8000/api/getabout/?name=${kori.id}`).then(res => {texta.value = res.data.message[0].about;console.log(vre.value)}).catch(err => console.log(err));
     })
-    watch(vre.value,() => {
-        console.log(vre.value)
-    })
+
+   
 </script>
 <template>
       <div class="options" :class={opj:props.klik}>
@@ -85,12 +87,16 @@ import { walk } from "vue/compiler-sfc";
 
                         </p>
                         <div class="cell start">
+                       
                         <textarea name="" id="" v-model="texta">
-                           {{ vre }}
+                           
                            
                         </textarea>
                   
                         <button @click="updateh()">Update Data</button>
+                        <div v-if="prikzi">
+                        Loading
+                        </div>
                         </div>
                            </div>
                            <br><br><br><br><br>

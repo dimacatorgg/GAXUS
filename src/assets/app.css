@@ -353,3 +353,14 @@ button.nbtn:hover{
     border-radius: 8px;
     opacity: 0;
 }
+.type{
+    width: 700px;
+    resize: vertical;
+    background: black;
+    color: white;
+    padding: 8px;
+    font-size: 22px;
+}
+.type::-webkit-scrollbar{
+    background: red;
+}

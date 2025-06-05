@@ -121,4 +121,6 @@ def about(requests):
     return JsonResponse({'message':"Uradjeno"})
 def getabout(requests):
     user1 = requests.GET.get("name")
-    return JsonResponse({"message":postSQL.getDatag(user1)})
+    return JsonResponse({"message":postSQL.getabout(user1)})
+def nesto(requests):
+    return JsonResponse({"message":postSQL.test()})
