@@ -122,7 +122,16 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'defaultdb',
+        'USER': 'avnadmin',
+        'PASSWORD': 'AVNS_nqBWu8eKVfVxpvWL5lc',
+        'HOST': 'pg-2461e067-paypaldimitrijr-b09e.i.aivencloud.com',
+        'PORT': '16437',  # Podrazumevani port za PostgreSQL
+    }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/

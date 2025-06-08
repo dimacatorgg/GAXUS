@@ -227,10 +227,17 @@ body{
 .ybn{
     width: 400px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.959);
+    background: rgba(255, 255, 255, 0.849);
     backdrop-filter: blur(20px);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.ybn:hover{
+    width: 200px;
+    color: white;
+    background: black;
 }

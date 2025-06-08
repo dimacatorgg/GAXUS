@@ -7,14 +7,8 @@ import backend.neo4jkonekcija as neo
 import clickhouse_connect
 from .models import Post
 from django.core.mail import send_mail
-if __name__ == '__main__':
-    client = clickhouse_connect.get_client(
-        host='wa7wr7nrxf.europe-west4.gcp.clickhouse.cloud',
-        user='default',
-        password='i_R9O2aceVliw',
-        secure=True
-    )
-    print("Result:", client.query("SELECT 1").result_set[0][0])
+
+ 
 def home(requests):
     return HttpResponse(f"{requests.GET.get("ime")}")
 
@@ -124,3 +118,15 @@ def getabout(requests):
     return JsonResponse({"message":postSQL.getabout(user1)})
 def nesto(requests):
     return JsonResponse({"message":postSQL.test()})
+def komentarisi(requests):
+    idx = requests.GET.get("id1")
+    id2 = str(uuid.uuid4())
+    poruka = requests.GET.get("data")
+    name = requests.GET.get("user")
+    rate = requests.GET.get("rate")
+    return JsonResponse({"message":postSQL.upisi(idx,name,id2,rate,poruka)})
+def komentari(requests):
+    idx = requests.GET.get("idx")
+    return JsonResponse({"message":postSQL.komentari(idx)})
+def tesg(requests):
+    return JsonResponse({"message":postSQL.testiraj()})
