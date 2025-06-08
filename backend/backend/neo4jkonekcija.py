@@ -133,3 +133,4 @@ def friendcheck(u1,u2):
             "u2":u2
         })
         return run.data()[0]["broj"]
+#Hey here
