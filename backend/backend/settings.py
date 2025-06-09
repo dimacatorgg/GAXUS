@@ -9,11 +9,12 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 from neomodel import config
 config.DATABASE_URL = "bolt://neo4j:dimitrije@localhost:7687"
 from pathlib import Path
 import os
-port = int(os.environ.get("PORT", 10000))
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -129,8 +130,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'defaultdb',
         'USER': 'avnadmin',
-        'PASSWORD': 'AVNS_nqBWu8eKVfVxpvWL5lc',
-        'HOST': 'pg-2461e067-paypaldimitrijr-b09e.i.aivencloud.com',
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
         'PORT': '16437',  # Podrazumevani port za PostgreSQL
     }
 }
