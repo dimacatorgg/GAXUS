@@ -15,7 +15,7 @@ config.DATABASE_URL = "bolt://neo4j:dimitrije@localhost:7687"
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the project like this: BASE_DIR / 'subdir'.drgrdgrdggrdgrdgdrgdrgdr
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -25,8 +25,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'paypaldimitrijr@gmail.com'
 EMAIL_HOST_PASSWORD = 'quez ddla tqpc ywha'
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
+# Quick-start development settings - unsuitable for productionfgrdgdgrdgdrgdrg
+# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/wadawdawdeasfsergfs
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-m5z!ey6l$kwy_q(gi$bx+2y1)_yzilzq2=q#mxiqsc_wl8z_g!'
