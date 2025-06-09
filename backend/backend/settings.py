@@ -135,7 +135,7 @@ DATABASES = {
         'PORT': '16437',  # Podrazumevani port za PostgreSQL
     }
 }
-
+#Hwj ja san nesto noco
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
