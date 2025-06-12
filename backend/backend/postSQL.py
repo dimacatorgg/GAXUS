@@ -1,8 +1,10 @@
 from django.db import connection
 import psycopg2 
 from psycopg2.extras import RealDictCursor
-con = psycopg2.connect('postgres://avnadmin:AVNS_nqBWu8eKVfVxpvWL5lc@pg-2461e067-paypaldimitrijr-b09e.i.aivencloud.com:16437/defaultdb?sslmode=require')
+#con = psycopg2.connect('postgres://avnadmin:AVNS_nqBWu8eKVfVxpvWL5lc@pg-2461e067-paypaldimitrijr-b09e.i.aivencloud.com:16437/defaultdb?sslmode=require')
+con = psycopg2.connect('dbname=GAXUS password=123 user=postgres port=5432')
 def testiraj():
+
     with con.cursor() as cs:
         #cs.execute("CREATE TABLE comments (idx VARCHAR(10000) NOT NULL,ime VARCHAR(1000) NOT NULL,idcom VARCHAR(10000) NOT NULL),poruka VARCHAR(10000) NOT NULL,up INT() NOT NULL,down INT() NOT NULL,rate INT() NOT NULL,)")
         cs.execute("SELECT * FROM comments")
